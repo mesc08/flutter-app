@@ -1,15 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 class Post {
   String body;
   String author;
-  int likes = 0;
-  bool userLiked = false;
+  Set userLiked = {};
+  DatabaseReference sid;
+  //bool userLiked = false;
   Post(this.body, this.author);
-  void likePost() {
-    this.userLiked = !this.userLiked;
-    if (this.userLiked) {
-      this.likes += 1;
+  void likePost(FirebaseUser user) {
+    if (this.userLiked.contains(user.uid)) {
+      this.userLiked.remove(user.uid);
     } else {
-      this.likes -= 1;
+      this.userLiked.add(user.uid);
     }
+  }
+
+  void setId(DatabaseReference id) {
+    this.sid = id;
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'author': this.author,
+      'usersLiked': this.userLiked.toList(),
+      'body': this.body
+    };
   }
 }
