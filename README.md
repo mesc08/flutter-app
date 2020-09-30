@@ -12,5 +12,5 @@ post messages and unlike like the post.
 
 ## SUPPORT:
 	
-	``android & ios```
+	```android & ios```
 
