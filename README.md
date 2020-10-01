@@ -1,7 +1,7 @@
 # OBJECTIVE
 
 This is an app that which has a google login authentication and allows users to
-post messages and unlike like the post.
+post messages and unlike like the post
 
 # TECHNOLOGY STACK
 
